@@ -22,3 +22,11 @@ $router->get('/', function () use ($router) {
 $router->get('/key', function() {
     return Str::random(32); 
 });
+
+/*
+$router->get('/user', function(){
+    return "Hola mundo señor Lumen!!!";
+});
+*/
+
+$router->get('/users',['uses'=> 'UsersController@index']);

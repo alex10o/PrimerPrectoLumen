@@ -45,8 +45,8 @@ function getToken(Request $request) {
    if($request->isJson()){
       try{
          $data = $request->json()->all();
-         $user = User::where(column: 'username',  $data['username'])->first();
-         if($user && Hash::make($data['password'], $user->password)){
+         $user = User::where('username',  $data['username'])->first();
+         if($user && Hash::check($data['password'], $user->password)){
             return response()->json($user, status:200);
          }
          else{

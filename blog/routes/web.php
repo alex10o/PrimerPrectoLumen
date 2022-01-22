@@ -23,11 +23,13 @@ $router->get('/key', function() {
     return Str::random(32); 
 });
 
+$router->group(['middleware'=>['auth']], function () use ($router){
+$router->get('/users',['uses'=> 'UsersController@index']);
+$router->post('/users',['uses'=> 'UsersController@createUser']);
+});
+
 /*
 $router->get('/user', function(){
     return "Hola mundo señor Lumen!!!";
 });
 */
-
-$router->get('/users',['uses'=> 'UsersController@index']);
-$router->post('/users',['uses'=> 'UsersController@createUser']);
